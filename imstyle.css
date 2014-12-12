@@ -1,10 +1,10 @@
 body{
-  background-color : olive;
+  background-color : teal;
 }
 
-#box{
-  margin: 0 20;
-    width:70%;
+#boxIM{
+  margin: 0 auto;
+    width:90%;
     float:left;
     height:520px;
     background: white;
@@ -14,7 +14,7 @@ body{
 #input{
   margin-left: 20 auto;
   width:90%;
-  height:80px;
+  height:38px;
   background: white;
   font-size: 14px;
 }
@@ -23,13 +23,7 @@ body{
   height:70px;
   font-size:24px;
 }
-#userslist{
-  margin: 0 20;
-  width:18%;
-  float:left;
-  height: 400px;
-  background: white;
-}
+
 
 #list{
   list-style:none;
