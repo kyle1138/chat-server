@@ -1,4 +1,4 @@
-var chatToo = new WebSocket("ws://localhost:3000");
+var chatToo = new WebSocket("http://kyle.princesspeach.nyc:3000");
 var info = {namList:[]};
 // var namList = {list:[]};
 

@@ -24,6 +24,7 @@ server.on("connection" , function(ws){
   ws.on("close" , function(){
     var escapee = clients.indexOf(ws);
     clients.splice(escapee,1);
+    namListS.splice(escapee,1);
     clients.forEach(function(user){user.send("A user has left the room")})
 
   })
