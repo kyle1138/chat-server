@@ -12,9 +12,25 @@ var censor = function(string){
   }
   return string.trim();
 }
+
+var funCheck = function(string){
+  for(var cc = 0 ; cc < fun.length ; cc ++){
+    for(var i = 0; i <= string.length - fun[cc].length ; i++){
+      var inspect = string.slice(i,i + fun[cc].length);
+      console.log(inspect);
+      if(inspect === fun[cc]){
+        string = string.slice(0,i) + newFun[cc] + string.slice(i + fun[cc].length , string.length);
+      }
+    }
+  }
+  return string.trim();
+}
+
 var WSS = require("ws").Server;
 var server = new WSS({port:3000});
-var curse = [" shit " , " fuck " , " ass ", " cunt " , " dang "];
+var curse = [" shit " , " fuck " , " ass ", " cunt " , " faggot "];
+var fun = ["(table flip)" , "(umadbro)" , "(fu)"];
+var newFun = ["(╯°□°）╯︵ ┻━┻" , "¯\\_(ツ)_/¯" ,"╭∩╮（︶︿︶）╭∩╮"];
 var clients = [];
 var msgLog = [];
 var namListS = [];
@@ -31,12 +47,13 @@ server.on("connection" , function(ws){
     namListS[index] = hash.name;
     hash["namList"] = namListS;
     console.log(hash.name + ": " + hash.message);
+    hash.message = funCheck(hash.message);
     hash.message = censor(hash.message);
     msgOut = JSON.stringify(hash);
     msgLog.push(msgOut);
     if(hash.message === "CENSORED! AND KICKED!"){
       ws.send("YOU HAVE BEEN KICKED");
-      setTimeout(function(){ws.close()} , 1)
+      setTimeout(function(){ws.close()} , 1);
       console.log("death")}
 
     clients.forEach(function(user){user.send(msgOut)});
