@@ -12,14 +12,16 @@ var fun = function(string){
   }
   return string.trim();
 }
+var strw = "/whisperalisoneatfarts"
+var ali = "alison"
+console.log(strw.slice(8,8 + ali.length));
 
+// var str1 = "hi everybody, this is a test of the (fu)n string functio(fu)n."
+// var str2 = "(umadbro)hi everybody, this is a test of the fun string function."
+// var str3 = "hi everybody, this  (table flip) is a test of the fun string function."
+// var str4 = "hi everybody, this is a test of the fun s(umadbro)tring function."
 
-var str1 = "hi everybody, this is a test of the (fu)n string functio(fu)n."
-var str2 = "(umadbro)hi everybody, this is a test of the fun string function."
-var str3 = "hi everybody, this  (table flip) is a test of the fun string function."
-var str4 = "hi everybody, this is a test of the fun s(umadbro)tring function."
-
-console.log(fun(str1));
-console.log(fun(str2));
-console.log(fun(str3));
-console.log(fun(str4));
+// console.log(fun(str1));
+// console.log(fun(str2));
+// console.log(fun(str3));
+// console.log(fun(str4));
