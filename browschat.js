@@ -1,16 +1,6 @@
-// var chatToo = new WebSocket("ws://kyle.princesspeach.nyc:3000");
-var chatToo = new WebSocket("ws://localhost:3000");
+var chatToo = new WebSocket("ws://kyle.princesspeach.nyc:3000");
+//var chatToo = new WebSocket("ws://localhost:3000");
 var info = {namList:[]};
-// var namList = {list:[]};
-
-// var picCheck = function(string){
-//   var check = string.slice(-4);
-//   var picCheck = false
-//   if(check === ".jpg" || (check === ".png" || check === ".gif")){
-//     var img = document.createElement("img");
-//     img.src = string;
-//     return img;}else{return string;}
-//   }
 
 var talker = function(name , message){
   var li = document.createElement("li");
@@ -78,14 +68,24 @@ input.addEventListener("keydown",function(ent){
 
 chatToo.addEventListener("open" , function(){
   console.log("connected");
-  info["name"] = prompt("what is your username?");
+  info["name"] = prompt("What is your username?");
+  if(info["name"] === ""){while(info["name"] === "")
+  {info["name"] = prompt("You must enter a username to chat.");}
+  handle.value = info["name"];
+  info.namList.push(info["name"]);
+  handle.value = info["name"];
+  info["message"] = handle.value + " has joined the chatroom."
+  var join = JSON.stringify(info);
+  chatToo.send(join);}
+  else{
   //talker(info["name"] ,"connected");
   info.namList.push(info["name"]);
   handle.value = info["name"];
   info["message"] = handle.value + " has joined the chatroom."
   var join = JSON.stringify(info);
-  chatToo.send(join);
+  chatToo.send(join);}
 })
+
 chatToo.addEventListener("close" , function(){
   console.log("DISconnected");
   talker(info["name"] ,"you have been disconnected");
