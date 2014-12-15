@@ -9,7 +9,6 @@ var talker = function(name , message){
   if(aCheck === "http://" && (pCheck === ".jpg" || (pCheck === ".png" || pCheck === ".gif"))){
     var pic = document.createElement("img");
     pic.src = message;
-    pic.style.width = "90%";
     li.innerHTML = name + " : " + message + "</br>";
     li.appendChild(pic);}
     else if(aCheck === "http://"){

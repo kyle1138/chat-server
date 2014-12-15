@@ -107,6 +107,9 @@ header {
 #usersList li{
   padding-left:10px;
 }
+img{
+  max-width: 90%;
+}
 div{
   border-radius:5px;
 }
