@@ -14,13 +14,15 @@ var info = {namList:[]};
 
 var talker = function(name , message){
   var li = document.createElement("li");
+  var aCheck = message.slice(0 , 7);
   var pCheck = message.slice(-4);
-  if(pCheck === ".jpg" || (pCheck === ".png" || pCheck === ".gif")){
+  if(aCheck === "http://" && (pCheck === ".jpg" || (pCheck === ".png" || pCheck === ".gif"))){
     var pic = document.createElement("img");
     pic.src = message;
-    li.innerText = name + " : "
+    pic.style.width = "90%";
+    li.innerHTML = name + " : " + message + "</br>";
     li.appendChild(pic);}
-    else if(message.slice(0 , 7) === "http://"){
+    else if(aCheck === "http://"){
     li.innerHTML = name + " : " + "<a href=\"" + message +"\" target =\"_blank\">"+ message +"</a>";
   }else{
   li.innerText = name + " : " + message;}
@@ -44,12 +46,15 @@ chatToo.addEventListener("message" , function(evt){
   talker(mumble.name , mumble.message);
   userListGen(mumble.namList);
   console.log(mumble.namList);
-}else{talker(mumble);
+}else{
   userListGen(mumble.namList);}
 })
 
 handle.addEventListener("keyup" , function(){
   info["name"] = handle.value.trim();
+  info["message"] = "";
+  var out = JSON.stringify(info);
+  chatToo.send(out);
 })
 
 input.addEventListener("keyup",function(){
@@ -80,4 +85,8 @@ chatToo.addEventListener("open" , function(){
   info["message"] = handle.value + " has joined the chatroom."
   var join = JSON.stringify(info);
   chatToo.send(join);
+})
+chatToo.addEventListener("close" , function(){
+  console.log("DISconnected");
+  talker(info["name"] ,"you have been disconnected");
 })

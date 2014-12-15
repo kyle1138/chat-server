@@ -16,8 +16,9 @@ var censor = function(string){
 var wisp = function(wispH){
   var wTarget = -1;
     for(var wc = 0; wc < namListS.length; wc++ ){
-      if(namListS[wc] === wispH["message"].slice(8,8 + namListS[wc].length)){
+      if(namListS[wc] === wispH["message"].slice(9,9 + namListS[wc].length)){
         wTarget = wc;
+        we = namListS.length;
         console.log(wc + " is the whisper target");
       }
     }
@@ -49,9 +50,9 @@ var funCheck = function(string){
 
 var WSS = require("ws").Server;
 var server = new WSS({port:3000});
-var curse = [" shit " , " fuck " , " ass ", " cunt " , " faggot "];
-var fun = ["(table flip)" , "(umadbro)" , "(fu)"];
-var newFun = ["(╯°□°）╯︵ ┻━┻" , "¯\\_(ツ)_/¯" ,"╭∩╮（︶︿︶）╭∩╮"];
+var curse = [" shit " , " fuck " , " ass ", " cunt " , " shithead "];
+var fun = ["(table flip)" , "(umadbro)" , "(fu)" , "(gimme)" , "(srs)"];
+var newFun = ["(╯°□°）╯︵ ┻━┻" , "¯\\_(ツ)_/¯" ,"╭∩╮（︶︿︶）╭∩╮" , "༼ つ ◕_◕ ༽つ", "(ಠ_ಠ)"];
 var clients = [];
 var msgLog = [];
 var namListS = [];
@@ -70,7 +71,7 @@ server.on("connection" , function(ws){
     console.log(hash.name + ": " + hash.message);
     hash.message = censor(hash.message);
     hash.message = funCheck(hash.message);
-    if(hash.message.slice(0,8) === "/whisper")
+    if(hash.message.slice(0,9) === "/whisper@")
       {wisp(hash)}else
       {
     msgOut = JSON.stringify(hash);
