@@ -1,6 +1,5 @@
 html {
 
-  min-width: 1020px;
   margin: 0 auto;
 
 }
@@ -8,9 +7,8 @@ header {
   text-align: center;
   color: #fff;
   background: #6496c8;
-  text-shadow: 1px 1px 1px #3456de;
+  text-shadow: 3px 3px 2px #3456ef;
 }
-
 
 
 #body{
@@ -18,10 +16,11 @@ header {
   font-family: sans-serif;
   font-size: 16px;
   min-width: 650px;
-  background: -webkit-linear-gradient(#AAAAAA, #979799);
-  background: -o-linear-gradient(#AAAAAA, #979799);
-  background: -moz-linear-gradient(#AAAAAA, #979799);
-  background: linear-gradient(#ffffff , #c9c9c9);
+  min-height: 400px;
+  background: -webkit-linear-gradient(#ffffff , #c9c9c9);
+  background: -o-linear-gradient(#ffffff , #c9c9c9);
+  background: -moz-linear-gradient(#ffffff , #c9c9c9);
+  background: linear-gradient(#ffffff , #b9b9c9);
 
 }
 

@@ -1,17 +1,17 @@
-var chatToo = new WebSocket("ws://kyle.princesspeach.nyc:3000");
-//var chatToo = new WebSocket("ws://localhost:3000");
+// var chatToo = new WebSocket("ws://kyle.princesspeach.nyc:3000");
+var chatToo = new WebSocket("ws://localhost:3000");
 var info = {namList:[]};
 
 var talker = function(name , message){
   var li = document.createElement("li");
   var aCheck = message.slice(0 , 7);
   var pCheck = message.slice(-4);
-  if(aCheck === "http://" && (pCheck === ".jpg" || (pCheck === ".png" || pCheck === ".gif"))){
+  if((aCheck === "http://" || aCheck === "https:/") && (pCheck === ".jpg" || (pCheck === ".png" || pCheck === ".gif"))){
     var pic = document.createElement("img");
     pic.src = message;
     li.innerHTML = name + " : " + message + "</br>";
     li.appendChild(pic);}
-    else if(aCheck === "http://"){
+    else if(aCheck === "http://" || aCheck === "https:/"){
     li.innerHTML = name + " : " + "<a href=\"" + message +"\" target =\"_blank\">"+ message +"</a>";
   }else{
   li.innerText = name + " : " + message;}

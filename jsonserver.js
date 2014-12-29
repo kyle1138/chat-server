@@ -18,7 +18,7 @@ var wisp = function(wispH){
     for(var wc = 0; wc < namListS.length; wc++ ){
       if(namListS[wc] === wispH["message"].slice(9,9 + namListS[wc].length)){
         wTarget = wc;
-        we = namListS.length;
+        wc = namListS.length;
         console.log(wc + " is the whisper target");
       }
     }
@@ -78,7 +78,7 @@ server.on("connection" , function(ws){
     msgLog.push(msgOut);
     if(hash.message === "CENSORED! AND KICKED!"){
       ws.send("YOU HAVE BEEN KICKED");
-      setTimeout(function(){ws.close()} , 1);
+      setTimeout(function(){ws.close()} , 3);
       console.log("death")}
 
     clients.forEach(function(user){user.send(msgOut)});
